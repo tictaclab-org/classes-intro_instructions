@@ -121,7 +121,7 @@ animate()
 
 const quizForm = document.getElementById('fonction-quiz');
 
-const listFunctions = ['preload()', 'loadImage()', 'setup()', 'createCanvas()', 'background()', 'resize()', 'draw()', 'image()', 'noStroke()', 'color()', 'drawBubble()', 'fill()', 'ellipse()', 'textStyle()', 'textSize()', 'text()'];
+const listFunctions = ['Star', 'ShootingStar', 'Building', 'Moon'];
 
 const correctFonctionQuiz = (event) => {
   const answerInputs = quizForm.querySelectorAll("input");

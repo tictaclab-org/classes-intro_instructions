@@ -130,7 +130,7 @@
 
             <p>Note qu'on a utilisé le mot clé <code class="language-js">class</code> et que le mot qui suit <code class="language-js">Student</code> est en <strong>UpperCamelCase</strong> (en gros, le mot commence avec une majuscule).</p>
 
-            <p>Cette classe n'est pas très palpitante. On ne voit pas les éléments que chaque élève (student) devrait avoir. Pour ce faire, on peut utiliser la methode <code class="language-js">constructor()</code></p>
+            <p>Cette classe n'est pas très palpitante. On n'a aucune idée des caractéristiques que chaque élève (student) devrait avoir. Pour ce faire, utilisons la fonction <code class="language-js">constructor()</code></p>
 
             <pre>
               <code class="language-js">
@@ -143,7 +143,7 @@
               </code>
             </pre>
 
-            <p><code class="language-js">constructor()</code>, c'est une fonction! Normalement, on écrirait plutôt:</p>
+            <p>Vu que <code class="language-js">constructor()</code> est une fonction, normalement, on écrirait plutôt:</p>
 
             <pre>
               <code class="language-js">
@@ -155,6 +155,46 @@
             </pre>
 
             <p>mais dans la définition de notre classe, les règles de syntaxe sont un peu différentes!</p>
+
+            <p>Tous les étudiants de notre programme auront  deux caractéristiques: "age" et "name" (âge et nom).</p>
+
+            <p>Maintenant que nous avons notre modèle (la classe) pour créer des étudiants, voyons comment créer un étudiant (une instance). À l'extérieur de la classe, on écrit ceci: <code class="language-js">new Student()</code></p>
+
+            <p>C'est tout! Pour créer deux étudiants:</p>
+            <pre>
+              <code class="language-js">
+              new Student();
+              new Student();
+              </code>
+            </pre>
+
+            <p>Pour créer trois étudiants:</p>
+            <pre>
+              <code class="language-js">
+              new Student();
+              new Student();
+              new Student();
+              </code>
+            </pre>
+
+            <p>Il se peut qu'on ait besoin de réutiliser nos étudiants plus tard dans notre code. Comment faire pour que l'ordinateur se souvienne de tous les étudiants qu'on a créés?</p>
+
+            <p>
+              <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer3a" role="button" aria-expanded="false" aria-controls="collapseAnswer3a">Réponse</a>
+            </p>
+            <div class="collapse mb-3" id="collapseAnswer3a">
+              <div class="card card-body">
+                <p>On les stocke dans des variables!</p>
+                <pre>
+                  <code class="language-js">
+                  const studentOne = new Student();
+                  const studentTwo = new Student();
+                  const studentThree = new Student();
+                  </code>
+                </pre>
+
+              </div>
+            </div>
         </div>
       </div>
     </div>

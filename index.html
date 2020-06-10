@@ -113,9 +113,6 @@
 
             <img src="images/townhouses.jpg" class="img-shadow" alt="">
 
-
-
-
             <p>Les classes en JavaScript représentent souvent des choses de la vraie vie. Comme des maisons, mais encore des étoiles, des bulles, des joueurs, des élèves, etc.</p>
 
             <p>Voici comment on définirait une classe qui représente le concept d'élève:</p>
@@ -242,7 +239,162 @@
             <button class="btn btn-primary" type="submit" id="fonction-quiz-submit">Corriger!</button>
           </form>
 
+          <br>
+
           <p>Une fois que tu as la liste, dans le fichier <code class="language-js">sketch.js</code>, crée une instance de chaque classe au bon endroit (dans la fonction <code class="language-js">draw()</code>, là où il y a les commentaires).</p>
+
+          <img src="images/class_comments.png" class="img-shadow mb-3" alt="">
+          <p>Si tu lances ton programme, tu verras qu'il ne se passe pas grand chose sur notre canevas.</p>
+
+          <img src="images/bare_canvas.png" class="img-shadow mb-3" alt="">
+
+          <p>Tu peux cependant t'assurer que tes instances ont bien été créées en les stockant dans une variable et en opérant un <code class="language-js">console.log()</code>:</p>
+
+          <img src="images/log_object.png" class="img-shadow mb-3" alt="">
+
+        </div>
+      </div>
+    </div>  <!-- end of card -->
+
+    <div class="card">
+      <div class="card-header" id="headingFive">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Etape 5 - Des classes et des fonctions
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+        <div class="card-body">
+          <p>Il est temps de retourner à nos classes! Une classe comporte très souvent une fonction <code class="language-js">constructor</code>. Mais ce n'est pas la seule fonction possible! À vrai dire, les classes ont généralement plusieurs fonctions. Rappelle-toi: les classes sont souvent une représentation d'objets réels (un étudiant, une étoile, une voiture...). Tous ces objets <em>font</em> des choses. L'étudiante remet un devoir, l'étoile brille dans le ciel, la voiture démarre...</p>
+
+          <p>En d'autre termes, les objets ont un <strong>comportement</strong> (en anglais, on parle de <em>behavior</em>). Et en code, quand on parle d'actions ou de comportement, on pense tout de suite à... des fonctions! Voici comment je pourrais ajouter une fonction à la classe <code class="language-js">Student</code>:</p>
+
+          <pre>
+            <code class="language-js">
+            class Student {
+              constructor() {
+                this.age = random(10, 16);
+                this.name = "Camille";
+                this.homework = 0;
+              }
+
+              handInHomework() {
+                this.homework++;
+                console.log(this.name + " a remis un devoir!");
+              }
+            }
+            </code>
+          </pre>
+
+          <p>Ici, j'ai ajouté une fonction, la fonction <code class="language-js">handInHomework()</code> (remettre un devoir). Note que dans la mesure du possible, il faut trouver des noms de fonctions en anglais. C'est la langue privilégiée par les dévs.</p>
+
+          <p>Toutes les instances de la classe <code class="language-js">Student</code> pourront maintenant... remettre un devoir! Voici comment cela fonctionne:</p>
+
+          <pre>
+            <code class="language-js">
+            // Je définis ma classe:
+            class Student {
+              constructor() {
+                this.age = random(10, 16);
+                this.name = "Camille";
+                this.homework = 0;
+              }
+
+              handInHomework() {
+                this.homework++;
+                console.log(this.name + " a remis un devoir!");
+              }
+            }
+
+            // Je crée une instance de la classe et je la sauvegarde dans une variable
+            const firstStudent = new Student();
+
+            // J'utilise la fonction handInHomework()
+            firstStudent.handInHomework();
+
+            </code>
+          </pre>
+          <p>À ton avis, est-ce que notre étudiante peut remettre un second devoir? Si oui, comment?</p>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer5a" role="button" aria-expanded="false" aria-controls="collapseAnswer5a">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer5a">
+            <div class="card card-body">
+            <p>Bien entendu! Il suffit d'utiliser la fonction <code class="language-js">handInHomework()</code> une deuxième fois:</p>
+              <pre>
+                <code class="language-js">
+                // Je crée une instance de la classe et je la sauvegarde dans une variable
+                const firstStudent = new Student();
+
+                // L'étudiante remet son premier devoir
+                firstStudent.handInHomework();
+
+                // L'étudiante remet son deuxième devoir
+                firstStudent.handInHomework();
+                </code>
+              </pre>
+            </div>
+          </div>
+
+          <div class="alert alert-warning" role="alert">
+            <p>
+              <i class="fas fa-exclamation-circle"></i>
+              Quand un utilise une fonction définie dans une classe, il faut impérativement le faire avec une instance de la classe. C'est pour ça qu'on a codé <code class="language-js">firstStudent.handInHomework()</code> plutôt que <code class="language-js">handInHomework()</code> tout court.
+            </p>
+          </div>
+
+          <p>Retourne voir les classes <code class="language-js">Star</code>, <code class="language-js">Building</code> et <code class="language-js">Moon</code> du projet p5.js. Chacune de ces classes a une fonction en plus de la fonction <code class="language-js">constructor()</code>. Laquelle?</p>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer5b" role="button" aria-expanded="false" aria-controls="collapseAnswer5b">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer5b">
+            <div class="card card-body">
+              <p>C'est la fonction <code class="language-js">display()</code>.</p>
+            </div>
+          </div>
+
+          <p>Et à ton avis, à quoi sert cette fonction?</p>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer5c" role="button" aria-expanded="false" aria-controls="collapseAnswer5c">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer5c">
+            <div class="card card-body">
+              <p>Elle sert à montrer l'objet sur le canevas. <em>Display</em> veut dire "montrer" ou "afficher".</p>
+            </div>
+          </div>
+
+          <p>Retourne dans le fichier <code class="language-js">sketch.js</code> et dans la fonction <code class="language-js">draw()</code>, tente d'ajouter des lignes de code pour que la lune, une étoile et un gratte-ciel apparaissent sur le canevas.</p>
+
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint5a" role="button" aria-expanded="false" aria-controls="collapseHint5a">Indice</a>
+          </p>
+          <div class="collapse mb-3" id="collapseHint5a">
+            <div class="card card-body">
+              <p>Il faudra utiliser la fonction <code class="language-js">display()</code>.</p>
+            </div>
+          </div>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer5d" role="button" aria-expanded="false" aria-controls="collapseAnswer5d">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer5d">
+            <div class="card card-body">
+              <pre>
+                <code class="language-js">
+                const moon = new Moon();
+                moon.display();
+                </code>
+              </pre>
+            </div>
+          </div>
+
+          <img src="images/crazy_canvas.gif" class="img-shadow mb-3" alt="">
+          <p>Ooops... on a un petit problème... l'étoile et le gratte-ciel ne tiennent pas en place! Par contre, aucun problème du côté de la lune... Pourquoi?</p>
+
         </div>
       </div>
     </div>  <!-- end of card -->

@@ -399,6 +399,109 @@
       </div>
     </div>  <!-- end of card -->
 
+    <div class="card">
+      <div class="card-header" id="headingSix">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            Etape 6 - Pouvoir variable...
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+        <div class="card-body">
+         <p>Si notre gratte-ciel ne cesse de bouger partout sur le canevas, c'est qu'on a crée notre nouvel objet <code class="language-js">Building</code> dans notre fonction <code class="language-js">draw()</code>.</p>
+         <p>En d'autres mots, 30 fois par seconde, l'ordinateur crée un nouveau gratte-ciel. Or examinons les <strong>propriétés</strong> d'un nouveau gratte-ciel (dans la classe <code class="language-js">Building</code>):</p>
+         <pre>
+           <code class="language-js">
+            constructor() {
+              this.levels = random(5,7);
+              this.gray = random(["DarkGray", "Gray", "dimgray", "LightSlateGray", "SlateGray", "black"]);
+              this.position = createVector(random(0,CANVAS_WIDTH), random(SKY_LEVEL, CANVAS_HEIGHT));
+            }
+           </code>
+         </pre>
+         <p>Combien de propriétés y a-t-il?</p>
+         <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6a" role="button" aria-expanded="false" aria-controls="collapseAnswer6a">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer6a">
+            <div class="card card-body">
+              <p>Il y a trois propriétés:</p>
+              <ul>
+                <li>levels</li>
+                <li>gray</li>
+                <li>position</li>
+              </ul>
+            </div>
+          </div>
+          <p>C'est la propriété <strong>position</strong> qui nous intéresse. La partie <code class="language-js">createVector</code> peut sembler étrange, mais ce qui est important de noter c'est l'utilisation de la fonction <code class="language-js">random()</code>. Cela veut dire qu'à chaque fois qu'un nouvel objet <code class="language-js">Building</code> est créé, il aura une position <strong>aléatoire</strong>.</p>
+
+          <p>Pour remédier au problème, il faut créer l'objet <code class="language-js">Building</code> qu'une seule fois pendant toute l'exécution du projet!</p>
+
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint6a" role="button" aria-expanded="false" aria-controls="collapseHint6a">Indice</a>
+          </p>
+          <div class="collapse mb-3" id="collapseHint6a">
+            <div class="card card-body">
+              <p>Pense à la fonction qui ne s'exécute qu'une seule fois pendant tout le programme... </p>
+              <p>Sache qu'un objet peut très bien être stocké dans une variable:</p>
+              <pre>
+                <code class="language-js">
+                const firstBuilding = new Buidling();
+                </code>
+              </pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>  <!-- end of card -->
+    <div class="card">
+      <div class="card-header" id="heading7">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            Etape 7 - Bonus!
+          </button>
+        </h2>
+      </div>
+      <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
+        <div class="card-body">
+          <p>Maintenant que tu as une étoile, un gratte-ciel est une lune, tu peux tenter de:</p>
+
+          <ol>
+            <li>Créer une étoile filante</li>
+            <li>Créer plusieurs gratte-ciels et plusieurs étoiles</li>
+          </ol>
+
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint7a" role="button" aria-expanded="false" aria-controls="collapseHint7a">Indice</a>
+          </p>
+          <div class="collapse mb-3" id="collapseHint7a">
+            <div class="card card-body">
+              <p>Une fois que tu as créé plusiers objets d'une même sorte, tu peux les sauvegarder dans une liste. En programmation, on appelle des listes des <strong>arrays</strong>.</p>
+
+              <p>Au début du code, trois listes vides ont été déclarées. Voici comment tu peux ajouter un élément dans une liste:</p>
+
+              <pre>
+                <code class="language-js">
+                let students = [];
+
+                let firstStudent = new Student();
+                let secondStudent = new Student();
+
+                students.push(firstStudent);
+                students.push(secondStudent);
+                </code>
+              </pre>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>  <!-- end of card -->
+
 </div>
 </div>
 </div>

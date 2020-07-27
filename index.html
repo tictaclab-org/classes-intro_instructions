@@ -673,7 +673,46 @@
       </div>
       <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
         <div class="card-body">
+          <p>Peux-tu ajouter quelques étoiles filantes? La particularité des étoiles filantes, c'est que la classe <code class="language-js">ShootingStar</code> "hérite" de la classe <code class="language-js">Star</code>. Le concept d'héritage est bien complexe (en programmation comme dans la vraie vie😀), mais pour nous, tout ce qu'il suffit de savoir, c'est que pour créer une étoile filante, on fait comme pour les autres classes:</p>
 
+          <pre>
+            <code class="language-js">
+            let shootingStar = new ShootingStar();
+            </code>
+          </pre>
+
+          <p>Tu peux donc coder plusieurs étoiles filantes sur le même modèle que tes étoiles normales. Utilise la fonction <code class="language-js">display()</code> pour voir tes étoiles. Tu verras que tes étoiles filantes sont rouges, mais malheureusement statiques (elles ne bougent pas):</p>
+          <img src="images/still_sh_stars.png" class="img-shadow mb-3" alt="">
+
+          <p>Pour les faire bouger, tu devras utiliser à la fois la fonction <code class="language-js">display()</code> et une autre fonction de la classe <code class="language-js">ShootingStar</code>.</p>
+
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint9a" role="button" aria-expanded="false" aria-controls="collapseHint9a">Indice</a>
+          </p>
+          <div class="collapse mb-3" id="collapseHint9a">
+            <div class="card card-body">
+              <p>Il faut utiliser la fonction <code class="language-js">update()</code>, suivie de la fonction <code class="language-js">display()</code>.</p>
+            </div>
+          </div>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer9a" role="button" aria-expanded="false" aria-controls="collapseAnswer9a">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer9a">
+            <div class="card card-body">
+              <pre>
+                <code class="language-js">
+                for (shootingStar of shootingStars) {
+                 shootingStar.update();
+                 shootingStar.display();
+                }
+                </code>
+              </pre>
+            </div>
+          </div>
+
+          <p>Tes étoiles filantes filent maintenant le parfait bonheur!</p>
+          <img src="images/sh_stars.gif" class="img-shadow mb-3" alt="">
         </div>
       </div>
     </div>  <!-- end of card -->

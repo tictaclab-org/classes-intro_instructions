@@ -184,9 +184,9 @@
                 <p>On les stocke dans des variables!</p>
                 <pre>
                   <code class="language-js">
-                  const studentOne = new Student();
-                  const studentTwo = new Student();
-                  const studentThree = new Student();
+                  let studentOne = new Student();
+                  let studentTwo = new Student();
+                  let studentThree = new Student();
                   </code>
                 </pre>
 
@@ -308,7 +308,7 @@
             }
 
             // Je crée une instance de la classe et je la sauvegarde dans une variable
-            const firstStudent = new Student();
+            let firstStudent = new Student();
 
             // J'utilise la fonction handInHomework()
             firstStudent.handInHomework();
@@ -326,7 +326,7 @@
               <pre>
                 <code class="language-js">
                 // Je crée une instance de la classe et je la sauvegarde dans une variable
-                const firstStudent = new Student();
+                let firstStudent = new Student();
 
                 // L'étudiante remet son premier devoir
                 firstStudent.handInHomework();
@@ -385,7 +385,7 @@
             <div class="card card-body">
               <pre>
                 <code class="language-js">
-                const moon = new Moon();
+                let moon = new Moon();
                 moon.display();
                 </code>
               </pre>
@@ -447,7 +447,7 @@
               <p>Sache qu'un objet peut très bien être stocké dans une variable:</p>
               <pre>
                 <code class="language-js">
-                const firstBuilding = new Buidling();
+                let firstBuilding = new Buidling();
                 </code>
               </pre>
             </div>
@@ -460,41 +460,62 @@
       <div class="card-header" id="heading7">
         <h2 class="mb-0">
           <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-            Etape 7 - Bonus!
+            Etape 7 - Plusieurs étoiles 🌟⭐🌟
           </button>
         </h2>
       </div>
       <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
         <div class="card-body">
-          <p>Maintenant que tu as une étoile, un gratte-ciel est une lune, tu peux tenter de:</p>
+          <p>Maintenant que tu as une étoile qui reste bien en place, tu peux en créer plusieurs facilement. Il suffit de les sauvegarder dans une liste. En programmation, on appelle des listes des <strong>arrays</strong>.</p>
 
-          <ol>
-            <li>Créer une étoile filante</li>
-            <li>Créer plusieurs gratte-ciels et plusieurs étoiles</li>
-          </ol>
+          <p>Première étape: c'est créer une liste vide et la sauvegarder dans une variable. Voici un exemple:</p>
+
+          <pre>
+            <code class="language-js">
+            let students = [];
+            </code>
+          </pre>
+
+          <p>Ici, j'ai créé une liste vide <code class="language-js">[]</code> que j'ai sauvegardée dans la variable <code class="language-js">students</code>.</p>
+
+          <p>Deuxième étape: créer les éléments (objets) qu'on va vouloir ajouter à la liste:</p>
+          <pre>
+            <code class="language-js">
+            let students = [];
+
+            let firstStudent = new Student();
+            let secondStudent = new Student();
+            </code>
+          </pre>
+
+          <p>Ici j'ai créé deux objets <code class="language-js">Student</code> et je les ai sauvegardés dans deux variables (<code class="language-js">firstStudent</code> et <code class="language-js">secondStudent</code>.</p>
+
+          <p>Troisième étape: ajouter les éléments à la liste. Pour cela, on utilise la fonction <code class="language-js">push()</code>:</p>
+
+          <pre>
+            <code class="language-js">
+            let students = [];
+
+            let firstStudent = new Student();
+            let secondStudent = new Student();
+
+            students.push(firstStudent);
+            students.push(secondStudent);
+            </code>
+          </pre>
+
+          <p>Si je fais un <code class="language-js">console.log</code> sur ma variable <code class="language-js">students</code>, voici ce que la console me montre:</p>
+
+          <p>Au début du code de la nuit étoilée, trois listes vides ont été déclarées</p>
+
+
 
           <p>
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint7a" role="button" aria-expanded="false" aria-controls="collapseHint7a">Indice</a>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint7b" role="button" aria-expanded="false" aria-controls="collapseHint7b">Indice</a>
           </p>
-          <div class="collapse mb-3" id="collapseHint7a">
+          <div class="collapse mb-3" id="collapseHint7b">
             <div class="card card-body">
-              <p>Une fois que tu as créé plusiers objets d'une même sorte, tu peux les sauvegarder dans une liste. En programmation, on appelle des listes des <strong>arrays</strong>.</p>
-
-              <p>Au début du code, trois listes vides ont été déclarées. Voici comment tu peux ajouter un élément dans une liste:</p>
-
-              <pre>
-                <code class="language-js">
-                let students = [];
-
-                let firstStudent = new Student();
-                let secondStudent = new Student();
-
-                students.push(firstStudent);
-                students.push(secondStudent);
-                </code>
-              </pre>
-
-
+              <p>Une fois que tu as créé plusieurs </p>
             </div>
           </div>
 

@@ -409,14 +409,17 @@
       </div>
       <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
         <div class="card-body">
-         <p>Si notre gratte-ciel ne cesse de bouger partout sur le canevas, c'est qu'on a crée notre nouvel objet <code class="language-js">Building</code> dans notre fonction <code class="language-js">draw()</code>.</p>
-         <p>En d'autres mots, 30 fois par seconde, l'ordinateur crée un nouveau gratte-ciel. Or examinons les <strong>propriétés</strong> d'un nouveau gratte-ciel (dans la classe <code class="language-js">Building</code>):</p>
-         <pre>
-           <code class="language-js">
-            constructor() {
-              this.levels = random(5,7);
-              this.gray = random(["DarkGray", "Gray", "dimgray", "LightSlateGray", "SlateGray", "black"]);
-              this.position = createVector(random(0,CANVAS_WIDTH), random(SKY_LEVEL, CANVAS_HEIGHT));
+          <p>Si notre gratte-ciel ne cesse de bouger partout sur le canevas, c'est qu'on a crée notre nouvel objet <code class="language-js">Building</code> dans notre fonction <code class="language-js">draw()</code>.</p>
+          <p>En d'autres mots, 30 fois par seconde, l'ordinateur crée un nouveau gratte-ciel. Or examinons les <strong>propriétés</strong> d'un nouveau gratte-ciel (dans la classe <code class="language-js">Building</code>):</p>
+          <pre>
+            <code class="language-js">
+            class Building {
+              constructor() {
+                this.levels = random(5,7);
+                this.gray = random(["DarkGray", "Gray", "dimgray", "LightSlateGray", "SlateGray", "black"]);
+                this.position = createVector(random(0,CANVAS_WIDTH), random(SKY_LEVEL, CANVAS_HEIGHT));
+              }
+              //...
             }
            </code>
          </pre>
@@ -436,20 +439,71 @@
           </div>
           <p>C'est la propriété <strong>position</strong> qui nous intéresse. La partie <code class="language-js">createVector</code> peut sembler étrange, mais ce qui est important de noter c'est l'utilisation de la fonction <code class="language-js">random()</code>. Cela veut dire qu'à chaque fois qu'un nouvel objet <code class="language-js">Building</code> est créé, il aura une position <strong>aléatoire</strong>.</p>
 
-          <p>Pour remédier au problème, il faut créer l'objet <code class="language-js">Building</code> qu'une seule fois pendant toute l'exécution du projet!</p>
+          <p>Le problème est le même pour notre étoile. Regarde la fonction <code class="language-js">constructor()</code> de l'étoile:</p>
+
+          <pre>
+            <code class="language-js">
+            class Star {
+              constructor() {
+                this.position = createVector(random(0,CANVAS_WIDTH-10), random(0,210));
+                this.color = 'gold';
+              }
+
+              //...
+            }
+            </code>
+          </pre>
+
+          <p>Là aussi, la propriété <strong>position</strong> de notre étoile est aléatoire (ici aussi, on utilise la fonction <code class="language-js">random()</code>).</p>
+
+          <p>Par contre, dans la fonction <code class="language-js">constructor()</code> de la lune, la position est fixe:</p>
+
+          <pre>
+            <code class="language-js">
+            class Moon {
+              constructor() {
+                this.position = createVector(500, 60);
+              }
+
+              //...
+            }
+            </code>
+          </pre>
+
+          <p>Pour remédier au problème du gratte-ciel et de l'étoile, il faut s'assurer qu'on ne les crée qu'une seule fois! Autrement dit, on ne peut pas coder <code class="language-js">let star = new Star();</code> dans la fonction <code class="language-js">draw()</code>.</p>
 
           <p>
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint6a" role="button" aria-expanded="false" aria-controls="collapseHint6a">Indice</a>
           </p>
           <div class="collapse mb-3" id="collapseHint6a">
             <div class="card card-body">
-              <p>Pense à la fonction qui ne s'exécute qu'une seule fois pendant tout le programme... </p>
-              <p>Sache qu'un objet peut très bien être stocké dans une variable:</p>
+              <p>Pense à la fonction qui ne s'exécute qu'une seule fois pendant tout le programme... Et n'oublie pas que si tu déclare une variable dans cette fonction, elle ne sera pas accessible dans la fonction <code class="language-js">draw()</code>...</p>
+            </div>
+          </div>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6a" role="button" aria-expanded="false" aria-controls="collapseAnswer6a">Réponse</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer6a">
+            <div class="card card-body">
+              <p>Dans ton fichier <strong>sketch.js</strong>, voici ce que tu peux faire pour l'étoile:</p>
+
               <pre>
                 <code class="language-js">
-                let firstBuilding = new Buidling();
+                // je déclare ma variable au tout début de mon code pour y avoir accès dans toutes les fonctions
+                let star;
+
+                function setup() {
+                  // je crée une étoile et je la sauvegarde dans ma variable
+                  star = new Star();
+                }
+                function draw() {
+                  // j'utilise la fonction display() pour faire en sorte que l'étoile soit constamment visible à l'écran
+                  star.display();
+                }
                 </code>
               </pre>
+              <p>Tu peux faire quelque chose de semblable pour le gratte-ciel.</p>
             </div>
           </div>
 
@@ -460,7 +514,7 @@
       <div class="card-header" id="heading7">
         <h2 class="mb-0">
           <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-            Etape 7 - Plusieurs étoiles 🌟⭐🌟
+            Etape 7 - Plusieurs étoiles 🌟🌟🌟
           </button>
         </h2>
       </div>
@@ -506,18 +560,119 @@
 
           <p>Si je fais un <code class="language-js">console.log</code> sur ma variable <code class="language-js">students</code>, voici ce que la console me montre:</p>
 
-          <p>Au début du code de la nuit étoilée, trois listes vides ont été déclarées</p>
+          <img src="images/array_students.png" class="img-shadow mb-3" alt="">
 
+          <p>Les deux étudiantes (qui s'appellent toutes les deux Camille) sont bien dans ma liste.</p>
 
+          <p>Et si je voulais 143 étudiantes? Ça serait suuuuuuper long de créer une variable pour chacune des étudiantes...</p>
+
+          <pre>
+            <code class="language-js">
+            let students = [];
+
+            let firstStudent = new Student();
+            let secondStudent = new Student();
+            let thirdStudent = new Student();
+            let fourthStudent = new Student();
+            let fifthStudent = new Student();
+            // ...
+
+            students.push(firstStudent);
+            students.push(secondStudent);
+            students.push(thirdStudent);
+            students.push(fourthStudent);
+            students.push(fifthStudent);
+            // ...
+            </code>
+          </pre>
+
+          <p>Ce que tu peux faire, c'est utiliser une boucle:</p>
+
+          <pre>
+            <code class="language-js">
+            for (let i = 0; i < 143; i++) {
+              let student = new Student();
+              students.push(student);
+            }
+            </code>
+          </pre>
+
+          <p>Ou, pour être encore plus efficace:</p>
+          <pre>
+            <code class="language-js">
+            for (let i = 0; i < 143; i++) {
+              students.push(new Student());
+            }
+            </code>
+          </pre>
+
+          <p>Avec ces trois lignes, tu viens de créer 143 étudiantes! Imaginons maintenant qu'elles remettent chacune un devoir. Pour cela, il faut que j'utilise la fonction <code class="language-js">handInHomework()</code>.</p>
+
+          <p>À ton avis, est-ce que je peux coder ceci?</p>
+
+          <pre>
+            <code class="language-js">
+            let students = [];
+
+            for (let i = 0; i < 143; i++) {
+              students.push(new Student());
+            }
+
+            students.handInHomework();
+            </code>
+          </pre>
 
           <p>
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint7b" role="button" aria-expanded="false" aria-controls="collapseHint7b">Indice</a>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer8a" role="button" aria-expanded="false" aria-controls="collapseAnswer8a">Réponse 1</a>
           </p>
-          <div class="collapse mb-3" id="collapseHint7b">
+          <div class="collapse mb-3" id="collapseAnswer8a">
             <div class="card card-body">
-              <p>Une fois que tu as créé plusieurs </p>
+              <p>Malheureusement pas! <code class="language-js">handInHomework()</code> est une fonction qui s'applique pour <strong>un</strong> seul étudiant, pas pour une <strong>liste</strong> d'étudiants!</p>
+              <p>Il va donc falloir passer à travers chacune des étudiantes de la liste et appliquer la fonction <code class="language-js">handInHomework()</code>. Rassure-toi, il y a un moyen assez facile de faire cela! À ton avis lequel?</p>
             </div>
           </div>
+
+          <p>
+            <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer8b" role="button" aria-expanded="false" aria-controls="collapseAnswer8b">Réponse 2</a>
+          </p>
+          <div class="collapse mb-3" id="collapseAnswer8b">
+            <div class="card card-body">
+              <p>Eh oui, on va une fois de plus utiliser une <strong>boucle</strong>!</p>
+              <p>Tu peux utiliser la boucle comme ceci:</p>
+
+              <pre>
+                <code class="language-js">
+                for (student of students) {
+                  student.handInHomework();
+                }
+                </code>
+              </pre>
+
+              <div class="alert alert-warning" role="alert">
+                <p>
+                  <i class="fas fa-exclamation-circle"></i>La boucle fonctionne car elle fait référence à la variable <code class="language-js">students</code> qui sauvegarde notre liste d'étudiantes. Si on avait mis <code class="language-js">for (student of allMyStudents)</code>, ça n'aurait pas fonctionné, car la variable <code class="language-js">allMyStudents</code> n'a pas été déclarée avant.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <p>Au début du code de la nuit étoilée, trois listes vides ont été déclarées. À toi maintenant de créer tes milliers (ok, dizaines) d'étoiles et de gratte-ciels. Que c'est beau!</p>
+          <img src="images/building_stars.png" class="img-shadow mb-3" alt="">
+        </div>
+      </div>
+    </div>  <!-- end of card -->
+
+    <div class="card">
+      <div class="card-header" id="headingEight">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+            Etape 8 - Bonus: des étoiles filantes 🌠🌠🌠
+          </button>
+        </h2>
+      </div>
+      <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+        <div class="card-body">
 
         </div>
       </div>
